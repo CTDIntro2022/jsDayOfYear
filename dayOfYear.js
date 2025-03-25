@@ -1,8 +1,6 @@
 //--------------- IMPORTANT!!! ---------------
 
-// Use the keyboard shortcut Alt + Z (for PC) or Option + Z (for Mac) to allow word wrap on this document.  Word wrap breaks the lines so you don't have to keep scrolling left and right to read.
-
-//READ THE INFORMATION IN THE BROWSER WINDOW PANEL ON THE RIGHT BEFORE BEGINNING YOUR ASSIGNMENT!!
+// This will be in Version 1.1
 const monthNameDays = [
     ["January", 31],
     ["February", 28],
@@ -25,7 +23,7 @@ const monthNameDays = [
   // Outputs: Day of the year - integer - THe day of the year or -1 if any errors encountered
   // Global References: monthNameDays - String - Two dimensional array of month names and days in that month
   // Side Effects: Console alerts if any error is enccountered
-  function dayOfTheYear(monthName, monthDay) {
+  export function dayOfTheYear(monthName, monthDay) {
     let foundMonth = false;
     let foundDay = false;
   
@@ -44,10 +42,11 @@ const monthNameDays = [
       // console.log(`Compare ${monthName} to ${monthNameDays[i][0]}`);
       if (monthName == monthNameDays[i][0]) {
         // We found month in the array
-        console.log("Found the month");
+        // console.log("Found the month");
         foundMonth = true;
         // Make sure day is in range of the month
-        if (monthDay > 1 && monthDay <= monthNameDays[i][1]) {
+        // Version 1.1 changed monthday > 1 to monthday >= 1 to address defect #1234
+        if (monthDay => 1 && monthDay <= monthNameDays[i][1]) {
           foundDay = true;
           retDOY += monthDay;
           break; // Leave for loop
