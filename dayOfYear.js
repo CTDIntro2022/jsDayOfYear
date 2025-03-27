@@ -26,7 +26,7 @@ const monthNameDays = [
   // Outputs: Day of the year - integer - THe day of the year or -1 if any errors encountered
   // Global References: monthNameDays - String - Two dimensional array of month names and days in that month
   // Side Effects: Console alerts if any error is enccountered
-  function dayOfTheYear(monthName, monthDay, year) {
+  export function dayOfTheYear(monthName, monthDay, year) {
     let foundMonth = false;
     let foundDay = false;
   
@@ -59,7 +59,7 @@ const monthNameDays = [
       } else {
         // Not this month, add number of days in the month
         // Special case for Feb and Leap Year
-        monthDayIndex  = 1
+        let monthDayIndex  = 1
         if (i == 1) {
           if (isALeapYear(year)) {
             monthDayIndex = 2
@@ -86,9 +86,8 @@ const monthNameDays = [
   // isALeapYear: Return true of the year is a leap year, false otherwise.
   // Generally, any year divisible by 4 is a leap year, except for century years (ending in "00") unless they are also divisible by 400. 
   function isALeapYear (yearIn){
-    leapYear = false
+    let leapYear = false
     // Is it a century year
-    console.log (yearIn % 100)
     if (yearIn % 100 == 0) {
       console.log ("Century")
       if (yearIn % 400 == 0) {
