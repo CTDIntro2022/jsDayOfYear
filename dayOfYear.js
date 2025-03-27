@@ -26,7 +26,7 @@ const monthNameDays = [
   // Outputs: Day of the year - integer - THe day of the year or -1 if any errors encountered
   // Global References: monthNameDays - String - Two dimensional array of month names and days in that month
   // Side Effects: Console alerts if any error is enccountered
-  export function dayOfTheYear(monthName, monthDay, year) {
+  function dayOfTheYear(monthName, monthDay, year) {
     let foundMonth = false;
     let foundDay = false;
   
