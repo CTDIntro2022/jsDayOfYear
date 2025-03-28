@@ -1,8 +1,6 @@
 //--------------- IMPORTANT!!! ---------------
 
-// Use the keyboard shortcut Alt + Z (for PC) or Option + Z (for Mac) to allow word wrap on this document.  Word wrap breaks the lines so you don't have to keep scrolling left and right to read.
-
-//READ THE INFORMATION IN THE BROWSER WINDOW PANEL ON THE RIGHT BEFORE BEGINNING YOUR ASSIGNMENT!!
+// This will be in Version 1.1
 const monthNameDays = [
     ["January", 31],
     ["February", 28, 29],
@@ -26,7 +24,7 @@ const monthNameDays = [
   // Outputs: Day of the year - integer - THe day of the year or -1 if any errors encountered
   // Global References: monthNameDays - String - Two dimensional array of month names and days in that month
   // Side Effects: Console alerts if any error is enccountered
-  function dayOfTheYear(monthName, monthDay, year) {
+  export function dayOfTheYear(monthName, monthDay, year) {
     let foundMonth = false;
     let foundDay = false;
   
@@ -39,6 +37,14 @@ const monthNameDays = [
       );
       return -1;
     }
+
+    // YEar must be greater than 1
+    if (year <= 1) {
+      console.error(
+        `${year} must be greater or equal to 1.`
+      );
+      return -1; 
+    }
   
     for (let i = 0; i < monthNameDays.length; i++) {
       // console.log("i: ", i);
@@ -47,7 +53,14 @@ const monthNameDays = [
         // We found month in the array
         foundMonth = true;
         // Make sure day is in range of the month
-        if (monthDay > 1 && monthDay <= monthNameDays[i][1]) {
+        // Version 1.1 changed monthday > 1 to monthday >= 1 to address defect #1234
+        let monthDayIndex  = 1
+        if (i == 1) {
+          if (isALeapYear(year)) {
+            monthDayIndex = 2
+          }
+        }
+        if (monthDay >= 1 && monthDay <= monthNameDays[i][monthDayIndex]) {
           foundDay = true;
           retDOY += monthDay;
           break; // Leave for loop
@@ -59,7 +72,7 @@ const monthNameDays = [
       } else {
         // Not this month, add number of days in the month
         // Special case for Feb and Leap Year
-        monthDayIndex  = 1
+        let monthDayIndex  = 1
         if (i == 1) {
           if (isALeapYear(year)) {
             monthDayIndex = 2
@@ -86,9 +99,8 @@ const monthNameDays = [
   // isALeapYear: Return true of the year is a leap year, false otherwise.
   // Generally, any year divisible by 4 is a leap year, except for century years (ending in "00") unless they are also divisible by 400. 
   function isALeapYear (yearIn){
-    leapYear = false
+    let leapYear = false
     // Is it a century year
-    console.log (yearIn % 100)
     if (yearIn % 100 == 0) {
       console.log ("Century")
       if (yearIn % 400 == 0) {
