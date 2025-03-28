@@ -37,6 +37,14 @@ const monthNameDays = [
       );
       return -1;
     }
+
+    // YEar must be greater than 1
+    if (year <= 1) {
+      console.error(
+        `${year} must be greater or equal to 1.`
+      );
+      return -1; 
+    }
   
     for (let i = 0; i < monthNameDays.length; i++) {
       // console.log("i: ", i);
@@ -46,7 +54,13 @@ const monthNameDays = [
         foundMonth = true;
         // Make sure day is in range of the month
         // Version 1.1 changed monthday > 1 to monthday >= 1 to address defect #1234
-        if (monthDay => 1 && monthDay <= monthNameDays[i][1]) {
+        let monthDayIndex  = 1
+        if (i == 1) {
+          if (isALeapYear(year)) {
+            monthDayIndex = 2
+          }
+        }
+        if (monthDay >= 1 && monthDay <= monthNameDays[i][monthDayIndex]) {
           foundDay = true;
           retDOY += monthDay;
           break; // Leave for loop
